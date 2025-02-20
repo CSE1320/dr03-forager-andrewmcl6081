@@ -2,9 +2,9 @@
 ####################### Makefile Template ##############################
 ########################################################################
 # Student settings
-NAME = YOURNAME
-SID = YOURSID
-EMAIL = YOURUTAEMAIL
+NAME = Andrew McLaughlin
+SID = 1001988355
+EMAIL = adm8355@mavs.uta.edu
 SEMESTER = SPRING2025
 PROJECT=PROJ03
  
