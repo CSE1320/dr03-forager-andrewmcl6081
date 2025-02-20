@@ -1,5 +1,4 @@
 import Link from 'next/link';
-import NavBar from '../../components/NavBar';
 
 export default function MushroomPage() {
   return (
@@ -8,7 +7,6 @@ export default function MushroomPage() {
       <Link href="/comparison">
         <button>Go to Mushroom Comparison Page</button>
       </Link>
-      <NavBar />
     </div>
   );
 }
