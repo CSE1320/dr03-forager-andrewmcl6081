@@ -9,12 +9,12 @@ export default function BackgroundSearch({ children, imageUrl }) {
           alt="Camera Background"
           fill
           priority
-          className="object-cover"
+          className="absolute object-cover object-center z-0"
         />
       </div>
 
       {/* Dark overlay for contrast */}
-      <div className="absolute inset-0 bg-black bg-opacity-20"/>
+      <div className="absolute inset-0 bg-black bg-opacity-20 pointer-events-none"/>
 
       {/* Content */}
       <div className="absolute inset-0 flex flex-col justify-between">
