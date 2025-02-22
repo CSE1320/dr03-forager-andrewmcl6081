@@ -27,7 +27,7 @@ export default function PhotoSearchPage() {
       <div className="z-10 absolute inset-x-0 bottom-0 h-32 bg-black bg-opacity-50 flex items-center justify-around px-6">
         <div className="text-2xl cursor-pointer flex justify-center items-center p-3">
           <Image
-            src="/images/album.png"
+            src="/icons/album.png"
             alt="Gallery"
             width={38}
             height={38}
@@ -39,7 +39,7 @@ export default function PhotoSearchPage() {
         </div>
         <div className="text-2xl cursor-pointer flex justify-center items-center p-3">
           <Image
-            src="/images/flip.png"
+            src="/icons/flip.png"
             alt="Flip Camera"
             width={38}
             height={38}

@@ -1,31 +1,31 @@
 import Image from "next/image";
+import SearchBar from "@/components/SearchBar";
+import UserGreeting from "@/components/UserGreeting";
+import MushroomOverlay from "@/components/MushroomOverlay";
+import Pill from "@/components/Pill";
 
 export default function DashboardPage() {
   return (
     <div className="w-full h-screen bg-[#579076] relative overflow-hidden">
-      {/* Mushroom Vector */}
-      <div className="absolute top-0 right-0 z-0">
-        <Image 
-          src="/images/mushroom_vector.svg"
-          alt="Mushroom Vector"
-          height={175}
-          width={175}
-          priority
-        />
-      </div>
+      <MushroomOverlay/>
+      <UserGreeting/>
 
-      <div className="relative z-10 px-6 pt-12 flex items-center justify-between">
-        <div>
-          <p className="text-white text-[24px] font-medium leading-[40px]">Hi,</p>
-          <h1 className="text-white text-[40px] font-extrabold leading-[40px]">Chantelle!</h1>
+      {/* Content Container */}
+      <div className="relative z-10 w-full h-full bg-[#F2F2F2] rounded-t-[42px] p-6 shadow-lg mt-10">
+        <div className="flex items-center justify-between mt-2">
+          <SearchBar/>
+          <button className="mr-2 p-2">
+            <Image
+              src="/icons/filter.png"
+              alt="Filter Button"
+              height={20}
+              width={20}
+            />
+          </button>
         </div>
-        <div className="w-10 h-10 bg-[#5F464B] text-white flex items-center justify-center rounded-full text-lg font-bold mr-4 cursor-pointer">
-          C
-        </div>
-      </div>
 
-      <div className="relative bg-[#F2F2F2] rounded-t-[42px] w-full h-full p-6 shadow-lg z-10 mt-8">
-        Testing
+        <h2 className="text-[25px] font-bold text-[#324053] mt-10">My Collection</h2>
+        <Pill/>
       </div>
     </div>
   );
