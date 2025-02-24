@@ -1,11 +1,11 @@
-
+// Define all possible filter options organized by category
 const filterData = {
   tags: [
-    { label: "Favorites", selected: true },
+    { label: "Favorites", selected: false },
     { label: "Recent", selected: false },
   ],
   regions: [
-    { label: "Texas", selected: true },
+    { label: "Texas", selected: false },
     { label: "North America", selected: false },
     { label: "South America", selected: false },
     { label: "Asia", selected: false },
@@ -13,17 +13,14 @@ const filterData = {
     { label: "Africa", selected: false },
   ],
   category: [
-    { label: "Poisonous", selected: true },
+    { label: "Poisonous", selected: false },
     { label: "Medicinal", selected: false },
     { label: "Mythical", selected: false },
     { label: "Good for Broths", selected: false },
   ],
 };
 
-const defaultAppliedFilters = [
-  { label: "Favorites", selected: true },
-  { label: "Texas", selected: true },
-  { label: "Poisonous", selected: true },
-];
+// These are initially applied filters when the app first loads
+const defaultAppliedFilters = [];
 
 export { filterData, defaultAppliedFilters };

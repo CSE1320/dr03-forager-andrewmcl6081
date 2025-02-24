@@ -2,11 +2,19 @@
 
 import { filterData } from "@/data/filterData";
 import PillList from "./PillList";
-import { useState, useEffect } from "react";
+import { useState, useEffect, use } from "react";
 import { IoClose } from "react-icons/io5";
 
-export default function FilterPage({ isOpen, onClose }) {
+export default function FilterPage({ isOpen, onClose, onApplyFilters, initialFilters }) {
   const [isAnimating, setIsAnimating] = useState(false);
+  const [localFilters, setLocalFilters] = useState(initialFilters || filterData);
+
+  // Reset local filters when opening modal
+  useEffect(() => {
+    if (isOpen && initialFilters) {
+      setLocalFilters(initialFilters);
+    }
+  }, [isOpen, initialFilters]);
 
   useEffect(() => {
     if (isOpen) {
@@ -19,6 +27,25 @@ export default function FilterPage({ isOpen, onClose }) {
     setTimeout(() => {
       onClose();
     }, 300);
+  };
+
+  const handleApply = () => {
+    // Pass the selected filters back to the dashboard
+    onApplyFilters && onApplyFilters(localFilters);
+    handleClose();
+  }
+
+  const handlePillClick = (category, label) => {
+    setLocalFilters(prev => {
+      const updatedFilters = {...prev};
+
+      // Toggle the selected state of the clicked pill
+      updatedFilters[category] = updatedFilters[category].map(pill => 
+        pill.label === label ? { ...pill, selected: !pill.selected } : pill
+      );
+
+      return updatedFilters;
+    });
   };
 
   if (!isOpen && !isAnimating) return null;
@@ -39,12 +66,18 @@ export default function FilterPage({ isOpen, onClose }) {
           </button>
         </div>
         
-        {Object.entries(filterData).map(([category, items]) => (
+        {Object.entries(localFilters).map(([category, items]) => (
           <div key={category} className="mt-10">
             <h3 className="font-bold text-lg text-black capitalize">{category}</h3>
-            <PillList pills={items}/>
+            <PillList pills={items} onPillClick={(label) => handlePillClick(category, label)} />
           </div>
         ))}
+
+        <div className="mt-10 flex justify-center">
+          <button onClick={handleApply} className="bg-[#579076] text-white py-3 px-8 rounded-full font-bold">
+            Apply Filters
+          </button>
+        </div>
       </div>
     </div>
   );
