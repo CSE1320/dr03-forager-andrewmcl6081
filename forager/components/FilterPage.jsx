@@ -38,10 +38,13 @@ export default function FilterPage({ isOpen, onClose }) {
             <IoClose color="black"/>
           </button>
         </div>
-
-        <PillList title="Tags" pills={filterData.tags} />
-        <PillList title="Regions" pills={filterData.regions} />
-        <PillList title="Category" pills={filterData.category} />
+        
+        {Object.entries(filterData).map(([category, items]) => (
+          <div key={category} className="mt-10">
+            <h3 className="font-bold text-lg text-black capitalize">{category}</h3>
+            <PillList pills={items}/>
+          </div>
+        ))}
       </div>
     </div>
   );

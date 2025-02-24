@@ -5,7 +5,10 @@ import SearchBar from "@/components/SearchBar";
 import UserGreeting from "@/components/UserGreeting";
 import MushroomOverlay from "@/components/MushroomOverlay";
 import FilterPage from "@/components/FilterPage";
+import PillList from "@/components/PillList";
+import MushroomList from "@/components/MushroomList";
 import { useState } from "react";
+import { defaultAppliedFilters } from "@/data/filterData";
 
 export default function DashboardPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
@@ -29,7 +32,11 @@ export default function DashboardPage() {
           </button>
         </div>
 
-        <h2 className="text-[25px] font-bold text-[#324053] mt-10">My Collection</h2>
+        <div className="w-full flex flex-col items-start">
+          <h2 className="text-[25px] font-bold text-[#324053] mt-10">My Collection</h2>
+          <PillList pills={defaultAppliedFilters}/>
+          <MushroomList />
+        </div>
       </div>
 
       <FilterPage isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
