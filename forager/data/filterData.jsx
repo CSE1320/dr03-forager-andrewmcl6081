@@ -1,4 +1,4 @@
-// Define all possible filter options organized by category
+
 const filterData = {
   tags: [
     { label: "Favorites" },
@@ -20,7 +20,4 @@ const filterData = {
   ],
 };
 
-// These are initially applied filters when the app first loads
-const defaultAppliedFilters = [];
-
-export { filterData, defaultAppliedFilters };
+export { filterData };

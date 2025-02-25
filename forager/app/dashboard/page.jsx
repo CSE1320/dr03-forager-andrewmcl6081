@@ -6,36 +6,31 @@ import UserGreeting from "@/components/UserGreeting";
 import MushroomOverlay from "@/components/MushroomOverlay";
 import FilterPage from "@/components/FilterPage";
 import MushroomList from "@/components/MushroomList";
-import { useMemo, useState } from "react";
-import { defaultAppliedFilters, filterData } from "@/data/filterData";
-import { mushroomData } from "@/data/mushroomData";
 import PillList from "@/components/PillList";
+import { useMemo, useState } from "react";
+import { filterData } from "@/data/filterData";
+import { mushroomData } from "@/data/mushroomData";
 
 export default function DashboardPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
 
   // Initialize activeFilters with our filterData, marking default items as selected
   const [activeFilters, setActiveFilters] = useState(() => {
     // Make a deep copy of filterData
     const initialState = JSON.parse(JSON.stringify(filterData));
 
-    // Set default filters as selected
-    defaultAppliedFilters.forEach(defaultFilter => {
-      Object.keys(initialState).forEach(category => {
-        initialState[category] = initialState[category].map(filter =>
-          filter.label === defaultFilter.label
-            ? { ...filter, selected: true }
-            : filter
-        );
-      });
+    // Explicitly set selected: false for all filter options on initialization of state
+    Object.keys(initialState).forEach(category => {
+      initialState[category] = initialState[category].map(filter => ({
+        ...filter,
+        selected: false
+      }));
     });
 
     return initialState;
   });
 
-  const [searchTerm, setSearchTerm] = useState("");
-
-  // Handle search input
   const handleSearch = (value) => {
     setSearchTerm(value);
   };
