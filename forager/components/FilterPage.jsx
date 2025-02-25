@@ -38,11 +38,13 @@ export default function FilterPage({ isOpen, onClose, onApplyFilters, initialFil
   const handlePillClick = (category, label) => {
     setLocalFilters(prev => {
       const updatedFilters = {...prev};
-
-      // Toggle the selected state of the clicked pill
-      updatedFilters[category] = updatedFilters[category].map(pill => 
-        pill.label === label ? { ...pill, selected: !pill.selected } : pill
-      );
+      
+      updatedFilters[category] = updatedFilters[category].map(pill => {
+        return {
+          ...pill,
+          selected: pill.label === label
+        };
+      });
 
       return updatedFilters;
     });

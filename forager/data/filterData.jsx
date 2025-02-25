@@ -1,22 +1,22 @@
 // Define all possible filter options organized by category
 const filterData = {
   tags: [
-    { label: "Favorites", selected: false },
-    { label: "Recent", selected: false },
+    { label: "Favorites" },
+    { label: "Recent" },
   ],
   regions: [
-    { label: "Texas", selected: false },
-    { label: "North America", selected: false },
-    { label: "South America", selected: false },
-    { label: "Asia", selected: false },
-    { label: "Europe", selected: false },
-    { label: "Africa", selected: false },
+    { label: "Texas" },
+    { label: "North America" },
+    { label: "South America" },
+    { label: "Asia" },
+    { label: "Europe" },
+    { label: "Africa" },
   ],
   category: [
-    { label: "Poisonous", selected: false },
-    { label: "Medicinal", selected: false },
-    { label: "Mythical", selected: false },
-    { label: "Good for Broths", selected: false },
+    { label: "Poisonous" },
+    { label: "Medicinal" },
+    { label: "Mythical" },
+    { label: "Good for Broths" },
   ],
 };
 
