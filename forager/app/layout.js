@@ -1,4 +1,3 @@
-import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import ClientNavBar from "@/components/ClientNavBar";
 import { Nunito } from "next/font/google";
