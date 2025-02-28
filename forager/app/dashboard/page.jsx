@@ -1,12 +1,11 @@
 "use client"
 
-import Image from "next/image";
-import SearchBar from "@/components/SearchBar";
 import UserGreeting from "@/components/UserGreeting";
 import MushroomOverlay from "@/components/MushroomOverlay";
 import FilterPage from "@/components/FilterPage";
 import MushroomList from "@/components/MushroomList";
-import PillList from "@/components/PillList";
+import AppliedFilters from "@/components/AppliedFilters";
+import SearchSection from "@/components/SearchSection";
 import { useMemo, useState } from "react";
 import { filterData } from "@/data/filterData";
 import { mushroomData } from "@/data/mushroomData";
@@ -14,10 +13,7 @@ import { mushroomData } from "@/data/mushroomData";
 export default function DashboardPage() {
   const [isFilterOpen, setIsFilterOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-
-  // Initialize activeFilters with our filterData, marking default items as selected
   const [activeFilters, setActiveFilters] = useState(() => {
-    // Make a deep copy of filterData
     const initialState = JSON.parse(JSON.stringify(filterData));
 
     // Explicitly set selected: false for all filter options on initialization of state
@@ -105,33 +101,12 @@ export default function DashboardPage() {
 
       {/* Content Container */}
       <div className="relative z-10 w-full h-full bg-[#F2F2F2] rounded-t-[42px] p-6 shadow-lg mt-10">
-        <div className="flex items-center justify-between mt-2">
-          <SearchBar onSearch={handleSearch} />
-          <button className="mr-2 p-2" onClick={() => setIsFilterOpen(true)}>
-            <Image
-              src="/icons/filter.png"
-              alt="Filter Button"
-              height={20}
-              width={20}
-            />
-          </button>
-        </div>
+        <SearchSection onSearch={handleSearch} onFilterClick={() => setIsFilterOpen(true)}/>
 
+        {/* AppliedFilters and MushroomList section */}
         <div className="w-full flex flex-col items-start">
           <h2 className="text-[25px] font-bold text-[#324053] mt-10">My Collection</h2>
-          
-          {/* Display Applied Filters */}
-          {selectedFilters.length > 0 && (
-            <div className="w-full">
-              <PillList 
-                pills={selectedFilters.map(label => ({
-                  label,
-                  selected: true
-                }))}
-              />
-            </div>
-          )}
-
+          <AppliedFilters selectedFilters={selectedFilters}/>
           <MushroomList mushrooms={filteredMushrooms} />
         </div>
       </div>
@@ -144,4 +119,4 @@ export default function DashboardPage() {
       />
     </div>
   );
-};
+}

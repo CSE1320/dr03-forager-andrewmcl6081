@@ -1,9 +1,9 @@
 "use client"
 
-import { filterData } from "@/data/filterData";
-import PillList from "./PillList";
 import { useState, useEffect, use } from "react";
+import { filterData } from "@/data/filterData";
 import { IoClose } from "react-icons/io5";
+import PillList from "./PillList";
 
 export default function FilterPage({ isOpen, onClose, onApplyFilters, initialFilters }) {
   const [isAnimating, setIsAnimating] = useState(false);
@@ -22,6 +22,10 @@ export default function FilterPage({ isOpen, onClose, onApplyFilters, initialFil
     }
   }, [isOpen]);
 
+  useEffect(() => {
+    onApplyFilters(localFilters);
+  }, [localFilters]);
+
   const handleClose = () => {
     setIsAnimating(false);
     setTimeout(() => {
@@ -29,21 +33,26 @@ export default function FilterPage({ isOpen, onClose, onApplyFilters, initialFil
     }, 300);
   };
 
-  const handleApply = () => {
-    // Pass the selected filters back to the dashboard
-    onApplyFilters && onApplyFilters(localFilters);
-    handleClose();
-  }
-
   const handlePillClick = (category, label) => {
     setLocalFilters(prev => {
       const updatedFilters = {...prev};
       
       updatedFilters[category] = updatedFilters[category].map(pill => {
-        return {
-          ...pill,
-          selected: pill.label === label
-        };
+        // If this pill is clicked
+        if (pill.label === label) {
+          return {
+            ...pill,
+            selected: !pill.selected
+          };
+        }
+
+        // If it's not the clicked pill, make sure it's deselected
+        else {
+          return {
+            ...pill,
+            selected: false
+          };
+        }
       });
 
       return updatedFilters;
@@ -74,12 +83,6 @@ export default function FilterPage({ isOpen, onClose, onApplyFilters, initialFil
             <PillList pills={items} onPillClick={(label) => handlePillClick(category, label)} />
           </div>
         ))}
-
-        <div className="mt-10 flex justify-center">
-          <button onClick={handleApply} className="bg-[#579076] text-white py-3 px-8 rounded-full font-bold">
-            Apply Filters
-          </button>
-        </div>
       </div>
     </div>
   );
