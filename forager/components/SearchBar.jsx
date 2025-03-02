@@ -7,7 +7,7 @@ export default function SearchBar({ onSearch }) {
   const handleChange = (e) => {
     const value = e.target.value;
     setInputValue(value);
-    onSearch && onSearch(value);
+    onSearch(value);
   }
 
   return (
