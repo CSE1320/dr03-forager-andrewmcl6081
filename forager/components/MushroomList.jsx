@@ -1,5 +1,4 @@
 import MushroomCard from "./MushroomCard";
-import { useMushroomContext } from "@/contexts/MushroomContext";
 
 export default function MushroomList({ mushrooms }) {
   if (mushrooms.length === 0) {
@@ -10,7 +9,7 @@ export default function MushroomList({ mushrooms }) {
     <div className="w-full mt-8">
       <ul className="grid grid-cols-3 gap-4">
         {mushrooms.map((mushroom) => (
-          <li key={mushroom.name} className="list-none cursor-pointer">
+          <li key={mushroom.id} className="list-none cursor-pointer">
             <MushroomCard {...mushroom} />
           </li>
         ))}
