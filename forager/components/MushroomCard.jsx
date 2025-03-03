@@ -1,8 +1,21 @@
 import Image from "next/image";
+import { useRouter } from "next/navigation";
+import { useMushroomContext } from "@/contexts/MushroomContext";
 
-export default function MushroomCard({ name, imgPath, hasWarning }) {
+export default function MushroomCard({ id, name, imgPath, hasWarning }) {
+  const router = useRouter();
+  const { setSelectedMushroomId } = useMushroomContext();
+
+  const handleClick = () => {
+    setSelectedMushroomId(id);
+    router.push("/mushroom");
+  }
+  
   return (
-    <div className="flex flex-col w-[100px]">
+    <div
+      className="flex flex-col w-[100px] cursor-pointer"
+      onClick={handleClick}
+    >
       <div className  ="relative h-[120px] bg-white shadow-md flex justify-center items-start">
         {hasWarning && (
           <Image
