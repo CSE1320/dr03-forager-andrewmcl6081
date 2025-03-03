@@ -1,60 +1,142 @@
 
 const mushroomData = [
   {
+    id: 1,
     name: "Death Cap",
     scientificName: "Amanita phalloides",
     imgPath: "/images/mushroom1.jpg",
     hasWarning: true,
     filters: {
-      tags: ["Favorites"],
-      regions: ["Texas", "North America"],
+      regions: ["Europe", "Asia", "North America"],
       category: ["Poisonous"]
-    }
+    },
+    characteristics: {
+      diameter: "5-15 cm",
+      capShape: "Flat",
+      capColor: "Yellow",
+      capTexture: "Smooth",
+      gillsType: "Free",
+      gillsColor: "White",
+      stemShape: "Slender",
+      stemColor: "White",
+      stemRing: "Absent",
+      habitat: "Near oak/beech",
+      isToxic: true,
+      isFavorite: false,
+    },
+    description: "The Death Cap is a highly toxic mushroom that is responsible for the majority of mushroom poisoning fatalities. It features a smooth yellow cap, free white gills, and a slender white stem, often found near oak and beech trees.",
+    region: "Europe, Asia, North America",
   },
   {
+    id: 2,
     name: "Paddy Straw",
     scientificName: "Volvariella volvacea",
     imgPath: "/images/mushroom2.jpg",
     hasWarning: false,
     filters: {
-      tags: ["Recent"],
+      tags: ["Recent", "Favorites"],
       regions: ["Asia"],
       category: ["Good for Broths"]
-    }
+    },
+    characteristics: {
+      diameter: "5-12 cm",
+      capShape: "Bell-shaped",
+      capColor: "Gray-brown",
+      capTexture: "Smooth",
+      gillsType: "Free",
+      gillsColor: "Pink",
+      stemShape: "Cylindrical",
+      stemColor: "White",
+      stemRing: "Absent",
+      habitat: "Rice straw beds",
+      isToxic: false,
+      isFavorite: true,
+    },
+    description: "An edible mushroom cultivated in East and Southeast Asia, featuring a smooth gray-brown cap and pink gills.",
+    region: "Asia, introduced elsewhere",
   },
   {
+    id: 3,
     name: "Destroying Angel",
     scientificName: "Amanita verna",
     imgPath: "/images/mushroom3.jpg",
     hasWarning: true,
     filters: {
-      tags: ["Favorites"],
-      regions: ["Texas", "North America"],
+      regions: ["Europe", "North America"],
       category: ["Poisonous"]
-    }
+    },
+    characteristics: {
+      diameter: "5-10 cm",
+      capShape: "Convex",
+      capColor: "White",
+      capTexture: "Smooth",
+      gillsType: "Free",
+      gillsColor: "White",
+      stemShape: "Slender",
+      stemColor: "White",
+      stemRing: "Present",
+      habitat: "Forests",
+      isToxic: true,
+      isFavorite: false,
+    },
+    description: "A deadly poisonous mushroom with a smooth white cap, free white gills, and a slender stem.",
+    region: "Europe, North America",
   },
   {
+    id: 4,
     name: "False Death Cap",
     scientificName: "Amanita citrina",
     imgPath: "/images/mushroom4.jpg",
-    hasWarning: true,
+    hasWarning: false,
     filters: {
       tags: ["Recent"],
-      regions: ["Europe"],
-      category: ["Poisonous"]
-    }
+      regions: ["Europe", "North America"],
+    },
+    characteristics: {
+      diameter: "5-10 cm",
+      capShape: "Convex",
+      capColor: "Yellowish",
+      capTexture: "Smooth",
+      gillsType: "Free",
+      gillsColor: "White",
+      stemShape: "Cylindrical",
+      stemColor: "White",
+      stemRing: "Present",
+      habitat: "Woodlands",
+      isToxic: false,
+      isFavorite: false,
+    },
+    description: "A mushroom with a yellowish cap and white gills, resembling the Death Cap but less toxic.",
+    region: "Europe, North America",
   },
   {
+    id: 5,
     name: "Puffball",
     scientificName: "Lycoperdon perlatum",
     imgPath: "/images/mushroom5.jpg",
     hasWarning: false,
     filters: {
       tags: ["Favorites"],
-      regions: ["Europe"],
+      regions: ["Texas", "North America", "South America", "Asia", "Europe", "Africa"],
       category: ["Medicinal"]
-    }
-  }
+    },
+    characteristics: {
+      diameter: "10-70 cm",
+      capShape: "Spherical",
+      capColor: "White",
+      capTexture: "Smooth",
+      gillsType: "None",
+      gillsColor: "N/A",
+      stemShape: "None",
+      stemColor: "N/A",
+      stemRing: "Absent",
+      habitat: "Grasslands",
+      isToxic: false,
+      isFavorite: true,
+    },
+    description: "Edible mushrooms known for their large, spherical fruiting bodies; they lack gills and stems.",
+    region: "Worldwide",
+  },
 ];
 
 export { mushroomData };
