@@ -28,7 +28,7 @@ export default function MushroomCard({ id, name, imgPath, hasWarning }) {
           />
         )}
         <Image 
-          className="object-cover mt-1"
+          className="object-cover mt-1 w-[90px] h-[95px]"
           src={imgPath}
           alt={`Image of ${name}`}
           width={90}

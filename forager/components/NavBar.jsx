@@ -21,7 +21,7 @@ export default function NavBar() {
   }
   
   return (
-    <div className="fixed bottom-0 left-0 right-0 z-[50] bg-[#579076] shadow-lg p-3 flex flex-col items-center rounded-t-2xl">
+    <div className="fixed bottom-0 left-0 right-0 z-50 bg-[#579076] shadow-lg p-3 flex flex-col items-center rounded-t-2xl">
       <div className="flex justify-around w-full">
         <div 
           className="text-2xl cursor-pointer flex justify-center items-center p-3"
