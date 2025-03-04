@@ -35,11 +35,12 @@ export default function NavBar() {
         >
           <FaHome color={pathname === "/dashboard" ? "#B6EEA6" : "#FFFFFF"}/>
         </div>
-        <Link href="/photosearch" passHref>
-          <div className="text-2xl cursor-pointer flex justify-center items-center p-3">
-            <FaSearch color={pathname === "/photosearch" ? "#B6EEA6" : "#FFFFFF"}/>
-          </div>
-        </Link>
+        <div 
+          className="text-2xl cursor-pointer flex justify-center items-center p-3"
+          onClick={() => handleNavigation("/photosearch")}
+        >
+          <FaSearch color={pathname === "/photosearch" ? "#B6EEA6" : "#FFFFFF"}/>
+        </div>
       </div>
 
       <div className="flex justify-center w-full">

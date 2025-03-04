@@ -1,4 +1,4 @@
-import MushroomCard from "./MushroomCard";
+import MushroomCard2 from "./MushroomCard2";
 
 export default function MushroomList({ mushrooms }) {
   if (mushrooms.length === 0) {
@@ -9,8 +9,8 @@ export default function MushroomList({ mushrooms }) {
     <div className="w-full mt-8">
       <ul className="grid grid-cols-3 gap-4">
         {mushrooms.map((mushroom) => (
-          <li key={mushroom.id} className="list-none cursor-pointer">
-            <MushroomCard {...mushroom} />
+          <li key={mushroom.id} className="list-none">
+            <MushroomCard2 {...mushroom} size="small"/>
           </li>
         ))}
       </ul>
