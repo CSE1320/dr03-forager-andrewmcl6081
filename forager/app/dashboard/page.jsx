@@ -108,7 +108,7 @@ export default function DashboardPage() {
         <div className="w-full flex flex-col items-start">
           <h2 className="text-[25px] font-bold text-[#324053] mt-10">My Collection</h2>
           <AppliedFilters selectedFilters={selectedFilters}/>
-          <MushroomList mushrooms={filteredMushrooms} />
+          <MushroomList mushrooms={filteredMushrooms} cardSize="small"/>
         </div>
       </div>
 

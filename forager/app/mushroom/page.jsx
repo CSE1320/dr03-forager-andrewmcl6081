@@ -1,11 +1,12 @@
 "use client"
 
 import { useMushroomContext } from "@/contexts/MushroomContext";
+import { FaPlus } from "react-icons/fa";
 import HeaderBar from "@/components/HeaderBar";
 import ErrorButton from "@/components/ErrorButton";
 import WarningMessage from "@/components/WarningMessage";
-import MushroomCard2 from "@/components/MushroomCard2";
-import { FaPlus } from "react-icons/fa";
+import MushroomCard from "@/components/MushroomCard";
+import FastFacts from "@/components/FastFacts";
 
 export default function MushroomPage() {
   const { getSelectedMushroom } = useMushroomContext();
@@ -35,7 +36,7 @@ export default function MushroomPage() {
               Compare &gt;
             </p>
           </div>
-          <MushroomCard2 {...mushroom} size="large" matchPercentage={97}/>
+          <MushroomCard {...mushroom} size="large"/>
 
           {/* Mushroom details section */}
           <div className="w-[290px] flex justify-between items-center mt-4">
@@ -52,12 +53,17 @@ export default function MushroomPage() {
           </div>
 
           {/* Fast Facts Section */}
-          <div className="w-[290px] mt-6 bg-[#8E4A49] text-white p-4 rounded-[40px]">
-            <h3 className="font-bold text-[18px] mb-2">Fast Facts</h3>
+          <FastFacts characteristics={mushroom.characteristics}/>
 
-            {/* Display mushroom characteristics */}
-            <p className="text-sm"></p>
+          {/* Description Section */}
+          <p className="w-[290px] text-gray-700 text-md mt-10 leading-relaxed text-justify">
+            {mushroom.description}
+          </p>
+
+          <div className="mt-10 px-4">
+            <h2 className="text-[25px] font-bold text-[#324053]">My Collection</h2>
           </div>
+
         </div>
       </div>
     </div>

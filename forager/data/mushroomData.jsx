@@ -26,6 +26,7 @@ const mushroomData = [
     },
     description: "The Death Cap is a highly toxic mushroom that is responsible for the majority of mushroom poisoning fatalities. It features a smooth yellow cap, free white gills, and a slender white stem, often found near oak and beech trees.",
     region: "Europe, Asia, North America",
+    matchPercentage: 97,
   },
   {
     id: 2,
@@ -54,6 +55,7 @@ const mushroomData = [
     },
     description: "An edible mushroom cultivated in East and Southeast Asia, featuring a smooth gray-brown cap and pink gills.",
     region: "Asia, introduced elsewhere",
+    matchPercentage: 90,
   },
   {
     id: 3,
@@ -81,6 +83,7 @@ const mushroomData = [
     },
     description: "A deadly poisonous mushroom with a smooth white cap, free white gills, and a slender stem.",
     region: "Europe, North America",
+    matchPercentage: 80,
   },
   {
     id: 4,
@@ -108,6 +111,7 @@ const mushroomData = [
     },
     description: "A mushroom with a yellowish cap and white gills, resembling the Death Cap but less toxic.",
     region: "Europe, North America",
+    matchPercentage: 70,
   },
   {
     id: 5,
@@ -136,6 +140,7 @@ const mushroomData = [
     },
     description: "Edible mushrooms known for their large, spherical fruiting bodies; they lack gills and stems.",
     region: "Worldwide",
+    matchPercentage: 60
   },
 ];
 
