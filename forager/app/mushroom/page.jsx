@@ -7,12 +7,13 @@ import ErrorButton from "@/components/ErrorButton";
 import WarningMessage from "@/components/WarningMessage";
 import MushroomCard from "@/components/MushroomCard";
 import FastFacts from "@/components/FastFacts";
+import SimilarMatchesGrid from "@/components/SimilarMatchesGrid";
 
 export default function MushroomPage() {
   const { getSelectedMushroom } = useMushroomContext();
-  const mushroom = getSelectedMushroom();
+  const selectedMushroom = getSelectedMushroom();
 
-  if (!mushroom) {
+  if (!selectedMushroom) {
     return <div>Loading...</div>;
   }
 
@@ -36,16 +37,16 @@ export default function MushroomPage() {
               Compare &gt;
             </p>
           </div>
-          <MushroomCard {...mushroom} size="large"/>
+          <MushroomCard {...selectedMushroom} size="large"/>
 
           {/* Mushroom details section */}
           <div className="w-[290px] flex justify-between items-center mt-4">
             <div>
-              <h1 className="text-[#324053] text-[30px] font-semibold leading-normal">{mushroom.name}</h1>
+              <h1 className="text-[#324053] text-[30px] font-semibold leading-normal">{selectedMushroom.name}</h1>
               <p 
                 className="text-[20px] italic font-normal leading-normal"
                 style={{ color: "rgba(32, 59, 95, 0.75)"}}
-              >{mushroom.scientificName}</p>
+              >{selectedMushroom.scientificName}</p>
             </div>
             <button className="bg-[#579076] w-[40px] h-[40px] rounded-full flex items-center justify-center">
               <FaPlus className="text-white text-3xl"/>
@@ -53,17 +54,15 @@ export default function MushroomPage() {
           </div>
 
           {/* Fast Facts Section */}
-          <FastFacts characteristics={mushroom.characteristics}/>
+          <FastFacts characteristics={selectedMushroom.characteristics}/>
 
           {/* Description Section */}
           <p className="w-[290px] text-gray-700 text-md mt-10 leading-relaxed text-justify">
-            {mushroom.description}
+            {selectedMushroom.description}
           </p>
 
-          <div className="mt-10 px-4">
-            <h2 className="text-[25px] font-bold text-[#324053]">My Collection</h2>
-          </div>
-
+          {/* Similar Matches Section */}
+          <SimilarMatchesGrid />
         </div>
       </div>
     </div>

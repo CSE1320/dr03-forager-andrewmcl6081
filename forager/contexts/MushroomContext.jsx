@@ -16,12 +16,31 @@ export function MushroomProvider({ children }) {
     return mushrooms[0];
   }
 
+  const getSelectedMushroomId = () => {
+    if (selectedMushroomId !== null) {
+      return selectedMushroomId;
+    }
+    return mushrooms[0]?.id;
+  }
+
+  const getAllMushrooms = () => {
+    return mushrooms;
+  }
+
+  const getSimilarMushrooms = () => {
+    const currentId = getSelectedMushroomId();
+    return mushrooms.filter(mushroom => mushroom.id !== currentId);
+  }
+
   const value = {
     mushrooms,
     setMushrooms,
     selectedMushroomId,
     setSelectedMushroomId,
     getSelectedMushroom,
+    getSelectedMushroomId,
+    getAllMushrooms,
+    getSimilarMushrooms,
     resetSelection: () => setSelectedMushroomId(null)
   };
 
