@@ -35,7 +35,7 @@ const mushroomData = [
     imgPath: "/images/mushroom2.jpg",
     hasWarning: false,
     filters: {
-      tags: ["Recent", "Favorites"],
+      tags: ["Recent"],
       regions: ["Asia"],
       category: ["Good for Broths"]
     },
@@ -51,7 +51,7 @@ const mushroomData = [
       stemRing: "Absent",
       habitat: "Rice straw beds",
       isToxic: false,
-      isFavorite: true,
+      isFavorite: false,
     },
     description: "An edible mushroom cultivated in East and Southeast Asia, featuring a smooth gray-brown cap and pink gills.",
     region: "Asia, introduced elsewhere",
@@ -120,7 +120,7 @@ const mushroomData = [
     imgPath: "/images/mushroom5.jpg",
     hasWarning: false,
     filters: {
-      tags: ["Favorites"],
+      tags: ["Recent"],
       regions: ["Texas", "North America", "South America", "Asia", "Europe", "Africa"],
       category: ["Medicinal"]
     },
@@ -136,7 +136,7 @@ const mushroomData = [
       stemRing: "Absent",
       habitat: "Grasslands",
       isToxic: false,
-      isFavorite: true,
+      isFavorite: false,
     },
     description: "Edible mushrooms known for their large, spherical fruiting bodies; they lack gills and stems.",
     region: "Worldwide",

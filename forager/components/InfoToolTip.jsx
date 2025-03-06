@@ -41,7 +41,7 @@ export default function InfoTooltip({ isOpen, onClose, title }) {
 
   return (
     <div 
-      className={`fixed inset-0 z-50 flex items-start justify-center pt-32 transition-opacity duration-300 ${isAnimating ? "opacity-100" : "opacity-0"}`}
+      className={`fixed inset-0 z-50 flex items-center justify-center pt-32 transition-opacity duration-300 ${isAnimating ? "opacity-100" : "opacity-0"}`}
       style={{ backgroundColor: "rgba(0, 0, 0, 0.3)"}}
     >
       <div

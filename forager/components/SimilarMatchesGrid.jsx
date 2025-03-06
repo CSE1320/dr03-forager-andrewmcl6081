@@ -33,7 +33,7 @@ export default function SimilarMatchesGrid() {
 
       <MushroomList 
         mushrooms={similarMushrooms}
-        cardSize="small"
+        cardSize="medium"
         gridCols={2}
       />
 

@@ -1,40 +1,7 @@
 import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useMushroomContext } from "@/contexts/MushroomContext";
-
-const SIZES = {
-  small: {
-    container: "w-[100px]",
-    imageContainer: "h-[120px]",
-    img: "w-[90px] h-[95px]",
-    imageWidth: 90,
-    imageHeight: 95,
-    warningSize: 16,
-    textSize: "text-sm",
-    showMatch: false
-  },
-  medium: {
-    container: "w-[150px]",
-    imageContainer: "h-[180px]",
-    imageWidth: 135,
-    imageHeight: 142,
-    warningSize: 24,
-    textSize: "text-base"
-  },
-  large: {
-    container: "w-[290px]",
-    polaroidContainer: "h-[290px]",
-    img: "w-[270px] h-[210px]",
-    imageWidth: 270, 
-    imageHeight: 210, 
-    warningSize: 24,
-    textSize: "text-lg",
-    showMatch: true,
-    badgeFontSize: "text-sm",
-    badePadding: "px-2.5 py-1",
-    iconSize: 16
-  }
-};
+import SIZES from "@/data/cardSizes";
 
 export default function MushroomCard({ 
   id, 
@@ -42,13 +9,14 @@ export default function MushroomCard({
   imgPath, 
   hasWarning,
   matchPercentage,
-  size = "small" // Default to small size
+  characteristics,
+  filters,
+  size = "small"
 }) {
   const router = useRouter();
   const { setSelectedMushroomId } = useMushroomContext();
-  
-  // Get size configuration or fallback to small
   const sizeConfig = SIZES[size] || SIZES.small;
+  const isToxic = hasWarning || characteristics?.isToxic || filters?.category?.includes("Poisonous");
 
   const handleClick = () => {
     setSelectedMushroomId(id);
@@ -88,7 +56,55 @@ export default function MushroomCard({
     );
   }
   
-  // For medium and large cards
+  // For medium cards with match percentage
+  else if (size === "medium") {
+    return (
+      <div 
+        className={`flex flex-col ${sizeConfig.container} cursor-pointer`} 
+        onClick={handleClick}
+      >
+        <div className={`relative ${sizeConfig.imageContainer} bg-white shadow-md`}>
+          {/* Match percentage badge for medium size */}
+          {matchPercentage && (
+            <div className={`absolute top-2 left-2 z-10 p-1
+              ${isToxic ? "bg-[#F66]" : "bg-[#73D89FE5]"} 
+              text-white rounded-md ${sizeConfig.badgeFontSize} font-medium ${sizeConfig.badgePadding}`}>
+              {matchPercentage}%
+            </div>
+          )}
+          
+          {/* Warning icon */}
+          {hasWarning && (
+            <Image
+              className="absolute top-2 right-2 z-10"
+              src="/icons/icon_warning.png"
+              alt="Warning Symbol"
+              width={sizeConfig.warningSize}
+              height={sizeConfig.warningSize}
+              priority
+            />
+          )}
+          
+          {/* Mushroom image */}
+          <div className="flex justify-center items-start w-full h-full pt-1">
+            <Image
+              className="object-cover"
+              src={imgPath}
+              alt={`Image of ${name}`}
+              width={sizeConfig.imageWidth}
+              height={sizeConfig.imageHeight}
+              priority
+            />
+          </div>
+        </div>
+        <h1 className={`text-[#203b5f] ${sizeConfig.textSize} font-semibold mt-2 text-center w-full`}>
+          {name}
+        </h1>
+      </div>
+    );
+  }
+  
+  // For large cards
   return (
     <div 
       className={`flex flex-col ${sizeConfig.container} cursor-pointer`} 

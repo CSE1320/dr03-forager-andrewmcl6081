@@ -2,7 +2,6 @@
 
 import { useMushroomContext } from "@/contexts/MushroomContext";
 import { useState, useEffect } from "react";
-import { FaPlus } from "react-icons/fa";
 import HeaderBar from "@/components/HeaderBar";
 import ErrorButton from "@/components/ErrorButton";
 import WarningMessage from "@/components/WarningMessage";
@@ -10,18 +9,40 @@ import MushroomCard from "@/components/MushroomCard";
 import FastFacts from "@/components/FastFacts";
 import SimilarMatchesGrid from "@/components/SimilarMatchesGrid";
 import WarningPopup from "@/components/WarningPopup";
+import FavoriteButton from "@/components/FavoriteButton";
 
 export default function MushroomPage() {
-  const { getSelectedMushroom } = useMushroomContext();
+  const { 
+    getSelectedMushroom, 
+    toggleFavorite, 
+    hasShownToxicWarning, 
+    markToxicWarningAsShown 
+  } = useMushroomContext();
   const selectedMushroom = getSelectedMushroom();
-  const [showWarning, setShowWarning] = useState(false);
+  const [showWarningPopup, setShowWarningPopup] = useState(false);
+  const [isToxicMushroom, setIsToxicMushroom] = useState(false);
 
   useEffect(() => {
     // Check if the mushroom is poisonous or has a warning flag
     if (selectedMushroom && (selectedMushroom.hasWarning || selectedMushroom.characteristics?.isToxic || selectedMushroom.filters?.category?.includes("Poisonous"))) {
-      setShowWarning(true);
+      if (!hasShownToxicWarning) {
+        setShowWarningPopup(true);
+      }
+      setIsToxicMushroom(true);
+    } else {
+      setShowWarningPopup(false);
+      setIsToxicMushroom(false);
     }
-  }, [selectedMushroom]);
+  }, [selectedMushroom, hasShownToxicWarning]);
+
+  const handleToggleFavorite = () => {
+    toggleFavorite(selectedMushroom.id);
+  }
+
+  const handleCloseWarning = () => {
+    setShowWarningPopup(false);
+    markToxicWarningAsShown();
+  }
 
   if (!selectedMushroom) {
     return <div>Loading...</div>;
@@ -33,8 +54,8 @@ export default function MushroomPage() {
 
       {/* Warning Popup */}
       <WarningPopup 
-        isOpen={showWarning}
-        onClose={() => setShowWarning(false)}
+        isOpen={showWarningPopup}
+        onClose={handleCloseWarning}
       />
 
       <div className="pb-[80px] overflow-y-auto">
@@ -45,7 +66,7 @@ export default function MushroomPage() {
         </div>
 
         {/* Warning Message */}
-        <WarningMessage />
+        {isToxicMushroom && <WarningMessage />}
 
         <div className="flex flex-col items-center mt-4">
           <div className="w-[290px] mb-1 flex justify-end">
@@ -64,9 +85,11 @@ export default function MushroomPage() {
                 style={{ color: "rgba(32, 59, 95, 0.75)"}}
               >{selectedMushroom.scientificName}</p>
             </div>
-            <button className="bg-[#579076] w-[40px] h-[40px] rounded-full flex items-center justify-center">
-              <FaPlus className="text-white text-3xl"/>
-            </button>
+            
+            <FavoriteButton 
+              isFavorite={selectedMushroom.characteristics?.isFavorite}
+              onToggleFavorite={handleToggleFavorite}
+            />
           </div>
 
           {/* Fast Facts Section */}

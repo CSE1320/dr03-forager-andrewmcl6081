@@ -8,6 +8,7 @@ const MushroomContext = createContext(undefined);
 export function MushroomProvider({ children }) {
   const [mushrooms, setMushrooms] = useState(mushroomData);
   const [selectedMushroomId, setSelectedMushroomId] = useState(null);
+  const [hasShownToxicWarning, setHasShownToxicWarning] = useState(false);
 
   const getSelectedMushroom = () => {
     if (selectedMushroomId !== null) {
@@ -32,6 +33,33 @@ export function MushroomProvider({ children }) {
     return mushrooms.filter(mushroom => mushroom.id !== currentId);
   }
 
+  const toggleFavorite = (mushroomId) => {
+    setMushrooms(prevMushrooms => 
+      prevMushrooms.map(mushroom => 
+        mushroom.id === mushroomId
+          ? {
+            ...mushroom,
+            characteristics: {
+              ...mushroom.characteristics,
+              isFavorite: !mushroom.characteristics.isFavorite
+            },
+            // Also update the filters to include or remove the "Favorites" tag
+            filters: {
+              ...mushroom.filters,
+              tags: mushroom.characteristics.isFavorite
+                ? (mushroom.filters.tags || []).filter(tag => tag !== "Favorites")
+                : [...(mushroom.filters.tags || []), "Favorites"]
+            }
+          }
+        : mushroom
+      )
+    );
+  }
+
+  const markToxicWarningAsShown = () => {
+    setHasShownToxicWarning(true);
+  }
+
   const value = {
     mushrooms,
     setMushrooms,
@@ -41,6 +69,9 @@ export function MushroomProvider({ children }) {
     getSelectedMushroomId,
     getAllMushrooms,
     getSimilarMushrooms,
+    toggleFavorite,
+    markToxicWarningAsShown,
+    hasShownToxicWarning,
     resetSelection: () => setSelectedMushroomId(null)
   };
 
