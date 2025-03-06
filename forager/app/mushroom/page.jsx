@@ -1,6 +1,7 @@
 "use client"
 
 import { useMushroomContext } from "@/contexts/MushroomContext";
+import { useState, useEffect } from "react";
 import { FaPlus } from "react-icons/fa";
 import HeaderBar from "@/components/HeaderBar";
 import ErrorButton from "@/components/ErrorButton";
@@ -8,10 +9,19 @@ import WarningMessage from "@/components/WarningMessage";
 import MushroomCard from "@/components/MushroomCard";
 import FastFacts from "@/components/FastFacts";
 import SimilarMatchesGrid from "@/components/SimilarMatchesGrid";
+import WarningPopup from "@/components/WarningPopup";
 
 export default function MushroomPage() {
   const { getSelectedMushroom } = useMushroomContext();
   const selectedMushroom = getSelectedMushroom();
+  const [showWarning, setShowWarning] = useState(false);
+
+  useEffect(() => {
+    // Check if the mushroom is poisonous or has a warning flag
+    if (selectedMushroom && (selectedMushroom.hasWarning || selectedMushroom.characteristics?.isToxic || selectedMushroom.filters?.category?.includes("Poisonous"))) {
+      setShowWarning(true);
+    }
+  }, [selectedMushroom]);
 
   if (!selectedMushroom) {
     return <div>Loading...</div>;
@@ -20,6 +30,12 @@ export default function MushroomPage() {
   return (
     <div className="w-full min-h-screen bg-[#F2F2F2]">
       <HeaderBar title="Match Results" backUrl="/dashboard" />
+
+      {/* Warning Popup */}
+      <WarningPopup 
+        isOpen={showWarning}
+        onClose={() => setShowWarning(false)}
+      />
 
       <div className="pb-[80px] overflow-y-auto">
         {/* Error report section */}
