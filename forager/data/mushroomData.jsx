@@ -144,4 +144,16 @@ const mushroomData = [
   },
 ];
 
-export { mushroomData };
+const userCharacteristics = {
+  cap_shape: "",
+  cap_color: "",
+  cap_texture: "",
+  gills_type: "",
+  gills_color: "",
+  stem_shape: "",
+  stem_color: "",
+  stem_ring: "",
+  habitat: ""
+};
+
+export { mushroomData, userCharacteristics };

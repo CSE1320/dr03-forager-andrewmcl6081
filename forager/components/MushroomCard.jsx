@@ -86,7 +86,7 @@ export default function MushroomCard({
           )}
           
           {/* Mushroom image */}
-          <div className="flex justify-center items-start w-full h-full pt-1">
+          <div className="flex justify-center items-start w-full h-full pt-2 pl-2 pr-2 pb-6">
             <Image
               className="object-cover"
               src={imgPath}
@@ -103,53 +103,55 @@ export default function MushroomCard({
       </div>
     );
   }
-  
+
   // For large cards
-  return (
-    <div 
-      className={`flex flex-col ${sizeConfig.container} cursor-pointer`} 
-      onClick={handleClick}
-    >
-      <div className={`flex flex-col ${sizeConfig.polaroidContainer || sizeConfig.imageContainer} bg-white shadow-md`}>
-        <div className="w-full flex justify-between p-1 mb-1 mt-1">
-          {matchPercentage && (
-            <div className={`flex items-center text-white rounded-full ${sizeConfig.badgePadding}`}>
-              <Image
-                src="/icons/skull_icon.png" 
-                alt="Skull icon"
-                width={sizeConfig.iconSize}
-                height={sizeConfig.iconSize}
-                className="mr-1"
-              />
-              <div className={`${sizeConfig.badgeFontSize} font-medium bg-red-500 rounded-md px-1`}>
-                {matchPercentage}% Match
+  else if (size === "large") {
+    return (
+      <div 
+        className={`flex flex-col ${sizeConfig.container} cursor-pointer`} 
+        onClick={handleClick}
+      >
+        <div className={`flex flex-col ${sizeConfig.polaroidContainer || sizeConfig.imageContainer} bg-white shadow-md`}>
+          <div className="w-full flex justify-between p-1 mb-1 mt-1">
+            {matchPercentage && (
+              <div className={`flex items-center text-white rounded-full ${sizeConfig.badgePadding}`}>
+                <Image
+                  src="/icons/skull_icon.png" 
+                  alt="Skull icon"
+                  width={sizeConfig.iconSize}
+                  height={sizeConfig.iconSize}
+                  className="mr-1"
+                />
+                <div className={`${sizeConfig.badgeFontSize} font-medium bg-red-500 rounded-md px-1`}>
+                  {matchPercentage}% Match
+                </div>
               </div>
-            </div>
-          )}
-        </div>
-        
-        {/* Image section */}
-        <div className="flex-grow flex justify-center items-start relative">
-          {hasWarning && (
+            )}
+          </div>
+          
+          {/* Image section */}
+          <div className="flex-grow flex justify-center items-start relative pb-4">
+            {hasWarning && (
+              <Image
+                className="absolute top-1 left-4"
+                src="/icons/icon_warning.png"
+                alt="Warning Symbol"
+                width={sizeConfig.warningSize}
+                height={sizeConfig.warningSize}
+                priority
+              />
+            )}
             <Image
-              className="absolute top-1 left-4"
-              src="/icons/icon_warning.png"
-              alt="Warning Symbol"
-              width={sizeConfig.warningSize}
-              height={sizeConfig.warningSize}
+              className={`object-cover ${sizeConfig.img || ''}`}
+              src={imgPath}
+              alt={`Image of ${name}`}
+              width={sizeConfig.imageWidth}
+              height={sizeConfig.imageHeight}
               priority
             />
-          )}
-          <Image
-            className={`object-cover ${sizeConfig.img || ''}`}
-            src={imgPath}
-            alt={`Image of ${name}`}
-            width={sizeConfig.imageWidth}
-            height={sizeConfig.imageHeight}
-            priority
-          />
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }

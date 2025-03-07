@@ -2,6 +2,7 @@
 
 import { useMushroomContext } from "@/contexts/MushroomContext";
 import { useState, useEffect } from "react";
+import { useRouter } from "next/navigation";
 import HeaderBar from "@/components/HeaderBar";
 import ErrorButton from "@/components/ErrorButton";
 import WarningMessage from "@/components/WarningMessage";
@@ -21,6 +22,7 @@ export default function MushroomPage() {
   const selectedMushroom = getSelectedMushroom();
   const [showWarningPopup, setShowWarningPopup] = useState(false);
   const [isToxicMushroom, setIsToxicMushroom] = useState(false);
+  const router = useRouter();
 
   useEffect(() => {
     // Check if the mushroom is poisonous or has a warning flag
@@ -69,7 +71,10 @@ export default function MushroomPage() {
         {isToxicMushroom && <WarningMessage />}
 
         <div className="flex flex-col items-center mt-4">
-          <div className="w-[290px] mb-1 flex justify-end">
+          <div 
+            className="w-[290px] mb-1 flex justify-end"
+            onClick={() => router.push("/comparison")}
+          >
             <p className="text-gray-600 text-sm cursor-pointer">
               Compare &gt;
             </p>

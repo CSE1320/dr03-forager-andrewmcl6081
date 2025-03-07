@@ -16,7 +16,7 @@ const SIZES = {
     imageWidth: 135,
     imageHeight: 142,
     warningSize: 24,
-    textSize: "text-base",
+    textSize: "text-lg",
     showMatch: true,
     badgeFontSize: "text-xs",
     badgePadding: "px-2 py-0.5",
@@ -34,7 +34,7 @@ const SIZES = {
     badgeFontSize: "text-sm",
     badgePadding: "px-2.5 py-1",
     iconSize: 16
-  }
+  },
 };
 
 export default SIZES;
