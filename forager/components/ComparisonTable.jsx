@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { userCharacteristics } from "@/data/development"; // Import global user characteristics
+import { userCharacteristics } from "@/data/mushroomData"; // Import global user characteristics
 
 export default function ComparisonTable({ mushroom }) {
     const [userInputs, setUserInputs] = useState({ ...userCharacteristics });

@@ -4,7 +4,7 @@ const mushroomData = [
     id: 1,
     name: "Death Cap",
     scientificName: "Amanita phalloides",
-    imgPath: "/images/mushroom1.jpg",
+    imgPath: "/images/mushroom1.png",
     hasWarning: true,
     filters: {
       regions: ["Europe", "Asia", "North America"],
@@ -32,7 +32,7 @@ const mushroomData = [
     id: 2,
     name: "Paddy Straw",
     scientificName: "Volvariella volvacea",
-    imgPath: "/images/mushroom2.jpg",
+    imgPath: "/images/mushroom2.png",
     hasWarning: false,
     filters: {
       tags: ["Recent"],
@@ -61,7 +61,7 @@ const mushroomData = [
     id: 3,
     name: "Destroying Angel",
     scientificName: "Amanita verna",
-    imgPath: "/images/mushroom3.jpg",
+    imgPath: "/images/mushroom3.png",
     hasWarning: true,
     filters: {
       regions: ["Europe", "North America"],
@@ -89,7 +89,7 @@ const mushroomData = [
     id: 4,
     name: "False Death Cap",
     scientificName: "Amanita citrina",
-    imgPath: "/images/mushroom4.jpg",
+    imgPath: "/images/mushroom4.png",
     hasWarning: false,
     filters: {
       tags: ["Recent"],
@@ -117,7 +117,7 @@ const mushroomData = [
     id: 5,
     name: "Puffball",
     scientificName: "Lycoperdon perlatum",
-    imgPath: "/images/mushroom5.jpg",
+    imgPath: "/images/mushroom5.png",
     hasWarning: false,
     filters: {
       tags: ["Recent"],
