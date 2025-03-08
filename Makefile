@@ -7,6 +7,7 @@ SID = 1001988355
 EMAIL = adm8355@mavs.uta.edu
 SEMESTER = SPRING2025
 PROJECT=PROJ03
+YOUTUBE=https://youtube.com/shorts/ZNzB9sXFybg?feature=share
  
 
 ####### DO NOT EDIT BELOW THIS LINE!!! #########
@@ -15,6 +16,7 @@ author:
 	@echo $(SID)
 	@echo $(EMAIL)
 	@echo $(SEMESTER)
+	@echo $(YOUTUBE)
 
 submit:
 submit:
